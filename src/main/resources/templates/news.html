@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Senaste nyheterna</title>
+</head>
+<body>
+<h1>Senaste nyheterna om [[${ticker}]]</h1>
+
+<ul>
+  <li th:each="article : ${articles}">
+    <a th:href="${article.url}" target="_blank" th:text="${article.title}"></a>
+    <p th:text="${article.description}"></p>
+  </li>
+</ul>
+</body>
+</html>
