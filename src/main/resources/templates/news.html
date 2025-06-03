@@ -5,12 +5,19 @@
   <title>Senaste nyheterna</title>
 </head>
 <body>
-<h1>Senaste nyheterna om [[${ticker}]]</h1>
+<h1>News for [[${ticker}]]</h1>
+
+<p>
+  Average sentiment:
+  <span th:text="${averageScore}">0.0</span>
+</p>
 
 <ul>
   <li th:each="article : ${articles}">
     <a th:href="${article.url}" target="_blank" th:text="${article.title}"></a>
     <p th:text="${article.description}"></p>
+    <p><strong>Sentiment:</strong> <span th:text="${article.sentimentLabel}"></span>
+      (<span th:text="${article.sentimentScore}"></span>)</p>
   </li>
 </ul>
 </body>
