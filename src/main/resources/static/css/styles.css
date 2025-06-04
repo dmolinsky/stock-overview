@@ -1,0 +1,152 @@
+/* =======================
+   FONTS & BASE STYLES
+======================= */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9fb;
+    color: #1e1e2f;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #1e1e2f;
+    margin-top: 0;
+}
+
+/* =======================
+   LAYOUT
+======================= */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+/* =======================
+   HEADER & SEARCH BAR
+======================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* =======================
+   ARTICLE LIST
+======================= */
+
+.article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.article-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.article-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.article-card a {
+    color: #2e6ff2;
+    text-decoration: none;
+}
+
+.article-card a:hover {
+    text-decoration: underline;
+}
+
+.article-meta {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+
+/* =======================
+   SENTIMENT STYLES
+======================= */
+
+.sentiment {
+    font-weight: bold;
+}
+
+.sentiment-positive {
+    color: #2e8b57;
+}
+
+.sentiment-negative {
+    color: #cc3d3d;
+}
+
+.sentiment-neutral {
+    color: #999999;
+}
+
+/* =======================
+   STOCK INFO / DATA TABLE
+======================= */
+
+.stock-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stock-metric {
+    flex: 1 1 200px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stock-metric h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+/* =======================
+   CHART AREA
+======================= */
+
+.chart-container {
+    margin-top: 2rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 300px;
+}

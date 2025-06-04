@@ -26,6 +26,21 @@ public class NewsService {
         double totalScore = 0.0;
         int count = 0;
 
+
+        // TEMP CODE
+        for (NewsArticle article : articles) {
+            SentimentResult sentiment = new SentimentResult("Neutral", 0.1);
+
+            article.setSentimentLabel(sentiment.getLabel());
+            article.setSentimentScore(sentiment.getScore());
+
+
+            if (sentiment.getScore() != null) {
+                totalScore += sentiment.getScore();
+                count++;
+            }
+
+        /* REAL CODE
         for (NewsArticle article : articles) {
             SentimentResult sentiment = sentimentClient.analyzeSentiment(
                     article.getTitle(), article.getDescription());
@@ -33,10 +48,14 @@ public class NewsService {
             article.setSentimentLabel(sentiment.getLabel());
             article.setSentimentScore(sentiment.getScore());
 
+
+
             if (sentiment.getScore() != null) {
                 totalScore += sentiment.getScore();
                 count++;
             }
+
+             */
         }
 
         double avg = count > 0 ? totalScore / count : 0.0;

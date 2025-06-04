@@ -2,23 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Senaste nyheterna</title>
+  <title>STOCK NEWS</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>News for [[${ticker}]]</h1>
+<div class="container">
 
-<p>
-  Average sentiment:
-  <span th:text="${averageScore}">0.0</span>
-</p>
+  <div class="header">
+    <h1>News for <span th:text="${ticker}">AAPL</span></h1>
+    <!-- SEARCHBAR TO BE IMPLEMENTED HERE LATER -->
+  </div>
 
-<ul>
-  <li th:each="article : ${articles}">
-    <a th:href="${article.url}" target="_blank" th:text="${article.title}"></a>
-    <p th:text="${article.description}"></p>
-    <p><strong>Sentiment:</strong> <span th:text="${article.sentimentLabel}"></span>
-      (<span th:text="${article.sentimentScore}"></span>)</p>
-  </li>
-</ul>
+  <div class="section">
+    <p><strong>Average sentiment:</strong>
+      <span th:text="${averageScore}">0.0</span>
+    </p>
+  </div>
+
+  <div class="section article-list">
+    <div class="article-card" th:each="article : ${articles}">
+      <h3>
+        <a th:href="${article.url}" target="_blank" th:text="${article.title}">Article title</a>
+      </h3>
+      <p class="article-meta" th:text="${article.source} + ' • ' + ${article.publishedAt}">Source • Date</p>
+      <p th:text="${article.description}">Article summary</p>
+
+      <p class="sentiment">
+        Sentiment:
+        <span th:text="${article.sentimentLabel}"
+              th:classappend="'sentiment-' + ${article.sentimentLabel.toLowerCase()}">Neutral</span>
+        (<span th:text="${article.sentimentScore}">0.0</span>)
+      </p>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>
