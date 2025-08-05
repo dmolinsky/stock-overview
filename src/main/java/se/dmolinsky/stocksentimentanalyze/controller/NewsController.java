@@ -21,8 +21,8 @@ public class NewsController {
     public String showNews(@RequestParam String ticker, Model model) {
         SentimentAnalysisResult result = newsService.getAnalyzedArticles(ticker);
 
-        model.addAttribute("articles", result.getArticles());
-        model.addAttribute("averageScore", result.getAverageScore());
+        //model.addAttribute("articles", result.getArticles());
+        //model.addAttribute("averageScore", result.getAverageScore());
         model.addAttribute("ticker", ticker);
         return "news";
     }
