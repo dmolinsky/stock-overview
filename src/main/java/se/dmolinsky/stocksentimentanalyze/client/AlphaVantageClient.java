@@ -21,7 +21,8 @@ public class AlphaVantageClient {
     private final ObjectMapper mapper = new ObjectMapper();
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public String fetchIntradayPrices(String symbol) {
+
+    public List<PricePoint> fetchIntradayPrices(String symbol) {
         String url = UriComponentsBuilder.fromHttpUrl("https://www.alphavantage.co/query")
                 .queryParam("function", "TIME_SERIES_INTRADAY")
                 .queryParam("symbol", symbol)
@@ -32,7 +33,8 @@ public class AlphaVantageClient {
 
 
         String json = restTemplate.getForObject(url, String.class);
-        return parseIntradayPrices(json).toString();
+
+        return parseIntradayPrices(json);
     }
 
     private List<PricePoint> parseIntradayPrices(String json) {
@@ -52,7 +54,7 @@ public class AlphaVantageClient {
 
             result.sort(Comparator.comparing(PricePoint::getTime));
         } catch (Exception e) {
-            e.printStackTrace(); // logga bättre i riktig applikation
+            e.printStackTrace();
         }
 
         return result;

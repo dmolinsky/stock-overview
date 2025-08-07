@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Chart fo ' + ${ticker}">Intradagsgraf</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="chart-container">
+        <h1 th:text="'Intraday stock chart for ' + ${ticker}">Graf</h1>
+        <canvas id="stockChart"></canvas>
+    </div>
+</div>
+
+
+<script th:inline="javascript">
+    const prices = [[${prices}]];
+
+    const labels = prices.map(p => p.time);
+    const data = prices.map(p => p.price);
+
+    new Chart(document.getElementById('stockChart'), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Pris (USD)',
+                data: data,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tid'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Pris (USD)'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
